@@ -1,74 +1,49 @@
 <%! from django.utils.translation import ugettext as _ %>
 
 <%! from django.core.urlresolvers import reverse %>
+<%! from time import strftime %>
 <%inherit file="main.html" />
 <%namespace name='static' file='static_content.html'/>
 
-<%! from microsite_configuration import microsite %>
-
-<%
-  homepage_overlay_html = microsite.get_value('homepage_overlay_html')
-
-  show_homepage_promo_video = microsite.get_value('show_homepage_promo_video', True)
-  homepage_promo_video_youtube_id = microsite.get_value('homepage_promo_video_youtube_id', "XNaiOGxWeto")
-
-  show_partners = microsite.get_value('show_partners', True)
-
-%>
-
 <section class="home">
   <header>
-    <div class="outer-wrapper">
-      <div class="title">
-        <hgroup>
-          % if homepage_overlay_html:
-            ${homepage_overlay_html}
-          % else:
-            % if self.stanford_theme_enabled():
-              <h1>${_("Free courses from <strong>{university_name}</strong>").format(university_name="Stanford")}</h1>
-            % else:
-              <h1>${_("The Future of Online Education")}</h1>
-            % endif
-            <h2>${_("For anyone, anywhere, anytime")}</h2>
-          % endif
-        </hgroup>
-
-        ## Disable social buttons for non-edX sites
-        % if not self.theme_enabled():
-          <section class="actions">
-            <div class="main-cta">
-              <a href="#signup-modal" id="signup_action" class="find-courses" rel="leanModal">${_("Sign Up")}</a>
-            </div>
-
-            <div class="secondary-actions">
-              <div class="social-sharing">
-                <div class="sharing-message">${_("Stay up to date with all {platform_name} has to offer!").format(platform_name=settings.PLATFORM_NAME)}</div>
-                <a href="https://twitter.com/edXOnline" class="share">
-                  <img src="${static.url('images/social/twitter-sharing.png')}">
-                </a>
-                <a href="http://www.facebook.com/EdxOnline" class="share">
-                  <img src="${static.url('images/social/facebook-sharing.png')}">
-                </a>
-                <a href="https://plus.google.com/108235383044095082735/posts" class="share">
-                  <img src="${static.url('images/social/google-plus-sharing.png')}">
-                </a>
-              </div>
-            </div>
-          </section>
-          % endif
-      </div>
-
-      % if show_homepage_promo_video:
-        <a href="#video-modal" class="media" rel="leanModal">
-          <div class="hero">
-            <div class="play-intro"></div>
-          </div>
-        </a>
-      % endif
-    </div>
+  <img src="${static.url('images/homepage-bg.jpg')}" width='90%' style='margin:0px auto;display:block;' />
+    
   </header>
+
   <section class="container">
     <section class="highlighted-courses">
+      ## Disable university partner logos and sites for non-edX sites
+      % if not self.theme_enabled():
+        <h2>${_('Explore Our courses')}</h2>
+
+        <section class="university-partners university-partners2x6">
+          <ol class="partners">
+            <li class="partner mit">
+              <a href="#">
+                <img src="${static.url('images/raymedLogo.png')}" />
+                <div class="name">
+                  <span>Raymed</span>
+                </div>
+              </a>
+            </li>
+            <li class="partner">
+              <a href="#">
+                <img src="${static.url('images/anadeltaLogo.png')}" />
+                <div class="name">
+                  <span>Anadelta</span>
+                </div>
+              </a>
+            </li>
+            
+            
+          
+          </ol>
+
+          
+        </section>
+
+      % endif
 
       % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
         <section class="courses">
@@ -81,7 +56,6 @@
             </ul>
         </section>
       % endif
-
     </section>
   </section>
 </section>
@@ -89,9 +63,10 @@
 <section id="video-modal" class="modal home-page-video-modal video-modal">
   <div class="inner-wrapper">
     <%
-      youtube_video_id = homepage_promo_video_youtube_id
       if self.stanford_theme_enabled():
         youtube_video_id = "2gmreZObCY4"
+      else:
+        youtube_video_id = "XNaiOGxWeto"
     %>
     <iframe width="640" height="360" src="//www.youtube.com/embed/${youtube_video_id}?showinfo=0" frameborder="0" allowfullscreen></iframe>
   </div>
