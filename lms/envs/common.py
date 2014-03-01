@@ -37,7 +37,7 @@ from lms.lib.xblock.mixin import LmsBlockMixin
 
 ################################### FEATURES ###################################
 # The display name of the platform to be used in templates/emails/etc.
-PLATFORM_NAME = "edX"
+PLATFORM_NAME = "e-MP"
 CC_MERCHANT_NAME = PLATFORM_NAME
 
 COURSEWARE_ENABLED = True
@@ -180,19 +180,19 @@ FEATURES = {
 
     # Toggle to enable chat availability (configured on a per-course
     # basis in Studio)
-    'ENABLE_CHAT': False,
+    'ENABLE_CHAT': True,
 
     # Allow users to enroll with methods other than just honor code certificates
     'MULTIPLE_ENROLLMENT_ROLES': False,
 
     # Toggle the availability of the shopping cart page
-    'ENABLE_SHOPPING_CART': False,
+    'ENABLE_SHOPPING_CART': True,
 
     # Toggle storing detailed billing information
     'STORE_BILLING_INFO': False,
 
     # Enable flow for payments for course registration (DIFFERENT from verified student flow)
-    'ENABLE_PAID_COURSE_REGISTRATION': False,
+    'ENABLE_PAID_COURSE_REGISTRATION': True,
 
     # Automatically approve student identity verification attempts
     'AUTOMATIC_VERIFY_STUDENT_IDENTITY_FOR_TESTING': False,
@@ -497,12 +497,12 @@ IGNORABLE_404_ENDS = ('favicon.ico')
 
 # Platform Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'registration@example.com'
-DEFAULT_FEEDBACK_EMAIL = 'feedback@example.com'
-SERVER_EMAIL = 'devops@example.com'
-TECH_SUPPORT_EMAIL = 'technical@example.com'
-CONTACT_EMAIL = 'info@example.com'
-BUGS_EMAIL = 'bugs@example.com'
+DEFAULT_FROM_EMAIL = 'edx@anadelta.gr'
+DEFAULT_FEEDBACK_EMAIL = 'edx@anadelta.gr'
+SERVER_EMAIL = 'edx@anadelta.gr'
+TECH_SUPPORT_EMAIL = 'edx@anadelta.gr'
+CONTACT_EMAIL = 'edx@anadelta.gr'
+BUGS_EMAIL = 'edx@anadelta.gr'
 ADMINS = ()
 MANAGERS = ADMINS
 
@@ -547,7 +547,7 @@ LANGUAGES = (
     ('es-419', u'Español (Latinoamérica)'),  # Spanish (Latin America)
 #    ('es-ar', u'Español (Argentina)'),  # Spanish (Argentina)
 #    ('es-ec', u'Español (Ecuador)'),  # Spanish (Ecuador)
-    ('es-es', u'Español (España)'),  # Spanish (Spain)
+#    ('es-es', u'Español (España)'),  # Spanish (Spain)
 #    ('es-mx', u'Español (México)'),  # Spanish (Mexico)
 #    ('es-pe', u'Español (Perú)'),  # Spanish (Peru)
 #    ('es-us', u'Español (Estados Unidos)'),  # Spanish (United States)
@@ -565,7 +565,6 @@ LANGUAGES = (
     ('id', u'Bahasa Indonesia'),  # Indonesian
     ('it-it', u'Italiano (Italia)'),  # Italian (Italy)
     ('ja-jp', u'日本語(日本)'),  # Japanese (Japan)
-#    ('kk-kz', u'қазақ тілі (Қазақстан)'),  # Kazakh (Kazakhstan)
 #    ('km-kh', u'ភាសាខ្មែរ (កម្ពុជា)'),  # Khmer (Cambodia)
     ('ko-kr', u'한국어(대한민국)'),  # Korean (Korea)
     ('lt-lt', u'Lietuvių (Lietuva)'),  # Lithuanian (Lithuania)
@@ -647,7 +646,7 @@ ZENDESK_USER = None
 ZENDESK_API_KEY = None
 
 ##### shoppingcart Payment #####
-PAYMENT_SUPPORT_EMAIL = 'payment@example.com'
+PAYMENT_SUPPORT_EMAIL = 'edx@anadelta.gr'
 ##### Using cybersource by default #####
 CC_PROCESSOR = {
     'CyberSource': {
@@ -659,7 +658,7 @@ CC_PROCESSOR = {
     }
 }
 # Setting for PAID_COURSE_REGISTRATION, DOES NOT AFFECT VERIFIED STUDENTS
-PAID_COURSE_REGISTRATION_CURRENCY = ['usd', '$']
+PAID_COURSE_REGISTRATION_CURRENCY = ['euro', u'€']
 
 # Members of this group are allowed to generate payment reports
 PAYMENT_REPORT_GENERATOR_GROUP = 'shoppingcart_report_access'
@@ -802,7 +801,7 @@ main_vendor_js = [
     'js/vendor/ova/vjs.youtube.js',
     'js/vendor/ova/rangeslider.js',
     'js/vendor/ova/share-annotator.js',
-    'js/vendor/ova/tinymce.min.js',
+    'js/vendor/ova/tinymce.full.min.js',
     'js/vendor/ova/richText-annotator.js',
     'js/vendor/ova/reply-annotator.js',
     'js/vendor/ova/tags-annotator.js',
