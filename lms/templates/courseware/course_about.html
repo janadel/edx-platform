@@ -236,7 +236,7 @@
                 site_domain = microsite.get_value('site_domain', 'www.edx.org')
                 platform_name = microsite.get_value('platform_name', 'edX')
 
-                tweet_action = "http://twitter.com/intent/tweet?text=I+just+registered+for+{number}+{title}+through+{account}:+{url}".format(
+                tweet_action = "http://twitter.com/intent/tweet?text=I+just+registered+for A Medical Physics Course through+{account}:+{url}".format(
                     number=course.number,
                     title=get_course_about_section(course, 'title'),
                     account=microsite.get_value('course_about_twitter_account', '@edxonline'),
@@ -250,7 +250,7 @@
 
                 email_subject = "mailto:?subject={subject}&body={body}".format(
                     subject="Take a course with {platform} online".format(platform=platform_name),
-                    body="I just registered for {number} {title} through {platform} {url}".format(
+                    body="I just registered for a Medical Physics Course through {platform} {url}".format(
                         number=course.number,
                         title=get_course_about_section(course, 'title'),
                         platform=platform_name,
