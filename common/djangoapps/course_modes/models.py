@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Add and create new modes for running courses on this particular LMS
 """
@@ -33,14 +34,14 @@ class CourseMode(models.Model):
     suggested_prices = models.CommaSeparatedIntegerField(max_length=255, blank=True, default='')
 
     # the currency these prices are in, using lower case ISO currency codes
-    currency = models.CharField(default="usd", max_length=8)
+    currency = models.CharField(default="euro", max_length=8)
 
     # turn this mode off after the given expiration date
     expiration_date = models.DateField(default=None, null=True, blank=True)
 
     expiration_datetime = models.DateTimeField(default=None, null=True, blank=True)
 
-    DEFAULT_MODE = Mode('honor', _('Honor Code Certificate'), 0, '', 'usd', None)
+    DEFAULT_MODE = Mode('honor', _('Honor Code Certificate'), 0, '', 'euro', None)
     DEFAULT_MODE_SLUG = 'honor'
 
     class Meta:
