@@ -186,7 +186,7 @@ FEATURES = {
     'MULTIPLE_ENROLLMENT_ROLES': False,
 
     # Toggle the availability of the shopping cart page
-    'ENABLE_SHOPPING_CART': True,
+    'ENABLE_SHOPPING_CART': False,
 
     # Toggle storing detailed billing information
     'STORE_BILLING_INFO': False,
